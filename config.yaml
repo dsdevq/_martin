@@ -1,0 +1,87 @@
+# Connection keep alive timeout [default: 75]
+keep_alive: 75
+
+# The socket address to bind [default: 0.0.0.0:3000]
+listen_addresses: ${LISTEN_ADDRESSES}
+
+# Number of web server workers
+worker_processes: 20
+
+# Amount of memory (in MB) to use for caching tiles [default: 512, 0 to disable]
+cache_size_mb: 1024
+
+# Database configuration. This can also be a list of PG configs.
+# postgres:
+#   connection_string: 'postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}'
+
+#   # sslmode: disable
+
+#   # Same as PGSSLCERT for psql
+#   # ssl_cert: './server.crt'
+#   # Same as PGSSLKEY for psql
+#   # ssl_key: './server.key'
+#   # Same as PGSSLROOTCERT for psql
+#   # ssl_root_cert: './server.crt'
+
+#   #  If a spatial table has SRID 0, then this SRID will be used as a fallback
+#   default_srid: 4326
+
+#   # Maximum Postgres connections pool size [default: 20]
+#   pool_size: 20
+
+#   # Limit the number of table geo features included in a tile. Unlimited by default.
+#   # max_feature_count: 1000
+
+#   # Control the automatic generation of bounds for spatial tables [default: quick]
+#   # 'calc' - compute table geometry bounds on startup.
+#   # 'quick' - same as 'calc', but the calculation will be aborted if it takes more than 5 seconds.
+#   # 'skip' - do not compute table geometry bounds on startup.
+#   auto_bounds: calc
+
+#   # Enable automatic discovery of tables and functions.
+#   # You may set this to `false` to disable.
+#   auto_publish: false
+#   # Associative arrays of function sources
+# Publish PMTiles files from local disk or proxy to a web server
+# pmtiles:
+#   paths:
+#     # scan this whole dir, matching all *.pmtiles files
+#     - /dir-path
+#     # specific pmtiles file will be published as a pmt source (filename without extension)
+#     - /path/to/pmt.pmtiles
+#     # A web server with a PMTiles file that supports range requests
+#     - https://example.org/path/tiles.pmtiles
+#   sources:
+#     # named source matching source name to a single file
+#     pm-src1: /path/to/pmt.pmtiles
+#     # A named source to a web server with a PMTiles file that supports range requests
+#     pm-web2: https://example.org/path/tiles.pmtiles
+
+# Publish MBTiles files
+mbtiles:
+  paths:
+    # scan this whole dir, matching all *.mbtiles files
+    - /home
+  # specific mbtiles file will be published as mbtiles2 source
+  # - /path/to/mbtiles.mbtiles
+  sources:
+    # named source matching source name to a single file
+    buildings: ./app_data/buildings.mbtiles
+    cover: ./app_data/cover.mbtiles
+    cover_3: ./app_data/cover_3.mbtiles
+    cover_6: ./app_data/cover_6.mbtiles
+    flood: ./app_data/flood.mbtiles
+# Sprite configuration
+# sprites:
+#   paths:
+#     # all SVG files in this dir will be published as a "my_images" sprite source
+#     - /path/to/my_images
+#   sources:
+#     # SVG images in this directory will be published as a "my_sprites" sprite source
+#     my_sprites: /path/to/some_dir
+
+# # Font configuration
+# fonts:
+#   # A list of *.otf, *.ttf, and *.ttc font files and dirs to search recursively.
+#   - /path/to/font/file.ttf
+#   - /path/to/font_dir

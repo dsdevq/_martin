@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@types/geojson": "^7946.0.14",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.0",
+    "typescript": "^5.3.3"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "martin": "node start.martin.js",
+    "create-buildings": "node ./dist/index.js",
+    "buildingsMbTiles": "tippecanoe --use-attribute-for-id=objectid  -Z10 -z14 -o ./app_data/buildings.mbtiles buildings.geojson"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.20"
+  }
+}
